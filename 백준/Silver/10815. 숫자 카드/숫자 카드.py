@@ -3,11 +3,13 @@ have = list(map(int, input().split()))
 have_dic = {}
 
 for elt in have:
-    have_dic[elt] = '1'
+    have_dic[elt] = '1 '
 
 M = int(input())
 wonder = list(map(int, input().split()))
 
-
+ans = ''
 for elt in wonder:
-    print(have_dic.get(elt, '0'), end=' ')
+    ans += have_dic.get(elt, '0 ')
+
+print(ans)
