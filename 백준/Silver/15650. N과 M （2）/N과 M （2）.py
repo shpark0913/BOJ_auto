@@ -1,20 +1,12 @@
 N, M = map(int, input().split())
-lst = []
-def f(i, k, r):
-    if i == r:
-        if set(p) not in lst:
-            lst.append(set(p))
-    else:
-        for j in range(k):
-            if not visited[j]:
-                visited[j] = 1
-                p[i] = a[j]
-                f(i+1, k, r)
-                visited[j] = 0
 
-a = [i for i in range(1, N+1)]
-visited = [0] * N
-p = [0] * M
-f(0, N, M)
-for elt in lst:
-    print(*elt)
+def nCr(n, r, s):
+    if r == 0:
+        print(*comb[::-1])
+    else:
+        for i in range(s, n-r+1):
+            comb[r-1] = A[i]
+            nCr(n, r-1, i+1)
+A = [i for i in range(1, N+1)]
+comb = [0] * M
+nCr(N, M, 0)
