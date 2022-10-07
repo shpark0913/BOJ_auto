@@ -4,7 +4,6 @@ def f():
     global D
     global K
     ricecake = [0] * (D + 1)
-
     ricecake[D] = K
     while 1:
         for i in range(1, K):
@@ -18,6 +17,5 @@ def f():
                 print(ricecake[1])
                 print(ricecake[2])
                 return
-
 
 f()
