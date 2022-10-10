@@ -18,10 +18,6 @@ def BFS():
                 tomatoes[nx][ny] = 3
                 age[nx][ny] = age[x][y] + 1
                 queue.append((nx, ny))
-            elif 0 <= nx < N and 0 <= ny < M and tomatoes[nx][ny] == 3:
-                if age[nx][ny] > age[x][y] + 1:
-                    age[nx][ny] = age[x][y] + 1
-                    queue.append((nx, ny))
 
 M, N = map(int, sys.stdin.readline().split())
 tomatoes = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
