@@ -15,21 +15,17 @@ def BFS():
             nx = x + dx[k]
             ny = y + dy[k]
             if 0 <= nx < N and 0 <= ny < M and tomatoes[nx][ny] == 0:
-                tomatoes[nx][ny] = 3
-                age[nx][ny] = age[x][y] + 1
+                tomatoes[nx][ny] = tomatoes[x][y] + 1
                 queue.append((nx, ny))
 
 M, N = map(int, sys.stdin.readline().split())
 tomatoes = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 age = [[0] * M for _ in range(N)]
-BFS()
-all_age = []
 all_tomatoes = []
-for elt in age:
-    all_age += elt
+BFS()
 for elt in tomatoes:
     all_tomatoes += elt
 if 0 in all_tomatoes:
     print(-1)
 else:
-    print(max(all_age))
+    print(max(all_tomatoes) - 1)
