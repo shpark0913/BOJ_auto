@@ -20,7 +20,6 @@ def BFS():
 
 M, N = map(int, sys.stdin.readline().split())
 tomatoes = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-age = [[0] * M for _ in range(N)]
 all_tomatoes = []
 BFS()
 for elt in tomatoes:
