@@ -3,10 +3,7 @@ cnt = 0
 
 if len(n) == 1:
     print(0)
-    if int(n[-1]) in {3, 6, 9}:
-        print("YES")
-    else:
-        print("NO")
+    print('YES') if not int(n[-1]) % 3 else print('NO')
 else:
     while 1:
         s = 0
@@ -15,12 +12,8 @@ else:
         cnt += 1
         if s < 10:
             print(cnt)
-            if s in {3, 6, 9}:
-                print('YES')
-                break
-            else:
-                print('NO')
-                break
+            print('NO') if s % 3 else print('YES')
+            break
         else:
             n = list(str(s))
 
