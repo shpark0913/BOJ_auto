@@ -1,1 +1,1 @@
-print(len(n:=list(input().split())))
+print(len(list(input().split())))
