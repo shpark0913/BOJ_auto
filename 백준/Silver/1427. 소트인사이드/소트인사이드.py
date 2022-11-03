@@ -1,2 +1,1 @@
-n = sorted(list(map(int, input())), reverse=True)
-print(*n, sep='')
+print(*sorted(list(map(int, input())))[::-1], sep='')
