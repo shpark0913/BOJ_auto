@@ -6,14 +6,7 @@ for (let student of studentsInput) {
     students.push({name: name, year: +yy, month: +mm, day: +dd});
 }
 students.sort((a, b) => {
-    if (a.year - b.year === 0) {
-        if (a.month - b.month === 0) {
-            return a.day - b.day;
-        }
-        return a.month - b.month;
-    }
-    return (a.year - b.year)
+    return a.year - b.year || a.month - b.month || a.day - b.day;
 })
 
-console.log(students[students.length -1].name);
-console.log(students[0].name);
+console.log(`${students[students.length -1].name}\n${students[0].name}`);
