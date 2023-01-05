@@ -1,5 +1,5 @@
-import sys
-input = sys.stdin.readline
+import io, os, sys
+input = io.BytesIO(os.read(0,os.fstat(0).st_size)).readline
 
 N, M, q = map(int, input().split())
 
