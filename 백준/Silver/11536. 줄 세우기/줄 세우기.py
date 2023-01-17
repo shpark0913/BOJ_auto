@@ -2,12 +2,9 @@ names = []
 for _ in range(N := int(input())):
     names.append(input())
 
-names_sort = sorted(names)
-names_sort_reverse = sorted(names, reverse=True)
-
-if names == names_sort:
+if names == sorted(names):
     print("INCREASING")
-elif names == names_sort_reverse:
+elif names == sorted(names, reverse=True):
     print("DECREASING")
 else:
     print("NEITHER")
