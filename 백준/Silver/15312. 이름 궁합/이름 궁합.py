@@ -8,17 +8,16 @@ nameB = input()
 # 이름 궁합 (A, B의 이름을 번갈아서)
 loveName = ''
 
-# 이름 궁합 점수 계산하기
-loveDigit = []
-loveDigitCalculate = []
-
 for i in range(len(nameA)):
     loveName += nameA[i]
     loveName += nameB[i]
 
+# 이름 궁합 점수 계산하기
+loveDigit = []
+loveDigitCalculate = []
+
 for i in range(len(loveName)):
     loveDigit.append(alphabet[loveName[i]])
-
 
 while 1:
     for i in range(len(loveDigit)-1):
@@ -29,7 +28,9 @@ while 1:
     if len(loveDigit) == 2:
         break
 
+# 답을 ansStr에 문자열로 저장
 ansStr = ''
 for digit in loveDigit:
     ansStr += str(digit)
+    
 print(ansStr)
