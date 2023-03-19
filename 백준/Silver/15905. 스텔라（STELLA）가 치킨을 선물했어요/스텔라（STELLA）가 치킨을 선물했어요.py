@@ -15,11 +15,12 @@ information.sort(key = lambda x :(-x[0], x[1]))
 # 5등 참가자
 person5th = information[4]
 
-# 5등 참가자와 해결한 문제 수가 같은 학생들을 원소로 가지는 리스트
-infor_5th = []
+# 5등 참가자와 해결한 문제 수가 같지만 수상을 못한 학생의 수
+cnt = 0
 
-for elt in information:
-    if elt[0] == information[4][0] and elt[1] > information[4][1]:
-        infor_5th.append(elt)
-
-print(len(infor_5th))
+for i in range(5, len(information)):
+    if information[i][0] < person5th[0]:
+        break
+    cnt += 1
+    
+print(cnt)
