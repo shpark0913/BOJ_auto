@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 # 모니터의 개수
 N = int(input())
 
