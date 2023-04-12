@@ -1,3 +1,5 @@
-N=int(input())
-l=sorted(list(map(int,input().split())))
-print(l[0]**2) if len(l)==1 else print(l[0]*l[-1])
+real_div = int(input())              # 진짜 약수들의 개수
+lst = list(map(int,input().split())) # 진짜 약수들
+# lst.sort()
+# print(lst[0]*lst[-1])
+print(min(lst)*max(lst))
