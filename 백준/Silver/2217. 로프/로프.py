@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 # 로프의 개수
 N = int(input())
 
