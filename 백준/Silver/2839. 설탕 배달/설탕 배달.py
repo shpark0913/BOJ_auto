@@ -1,8 +1,8 @@
 # 배달해야 할 설탕 무게
-N = int(input())
-lst = [N]
+lst = [int(input())]
+
 # 5kg 봉지의 수 (3kg 봉지의 수는 num3)
-num5 = N//5
+num5 = lst[0]//5
 
 while 1:
     N = lst[0]
