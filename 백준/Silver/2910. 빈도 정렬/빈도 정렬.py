@@ -23,6 +23,4 @@ ansList = []
 
 for num in numsDic:
     for _ in range(num[1]):
-        ansList.append(num[0])
-
-print(*ansList)
+        print(num[0], end=" ")
