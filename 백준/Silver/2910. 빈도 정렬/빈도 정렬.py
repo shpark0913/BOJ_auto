@@ -10,11 +10,11 @@ numsDic = {}
 numsList = list(map(int, input().split()))
 
 for num in numsList:
-    if num in numsDic.keys():
+    try:
         numsDic[num] += 1
-    else:
+    except:
         numsDic[num] = 1
-
+        
 # numsDic을 .items()를 활용해 list로 변경, 이후 2번째 원소로 정렬
 numsDic = sorted(numsDic.items(), key=lambda x:-x[1])
 
