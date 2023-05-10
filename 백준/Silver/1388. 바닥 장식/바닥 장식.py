@@ -1,6 +1,9 @@
+import sys
+input = sys.stdin.readline
+
 # 백준 1388 (실버 4)
 # https://www.acmicpc.net/problem/1388
-# Python3 / 메모리 : KB / 시간 : ms
+# Python3 / 메모리 : 31256KB / 시간 : 52ms
 
 # 바닥의 세로 크기 : N, 가로 크기 : M
 N, M = map(int, input().split())
@@ -22,7 +25,7 @@ def dfs(floor, visited, i, j):
             if j + 1 < M and floor[i][j+1] == '-':
                 visited[i][j+1] = True
                 j += 1
-            else: 
+            else:
                 break
     elif floor[i][j] == '|':
         while 1:
