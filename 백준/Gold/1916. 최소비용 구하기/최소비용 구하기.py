@@ -19,7 +19,7 @@ for _ in range(nums_bus):
 
 start, arrive = map(int, input().split())
 
-def dijkstra(s):
+def dijkstra(s, a):
     distance[s] = 0
     q = []
     heapq.heappush(q, [0, s])
@@ -27,12 +27,14 @@ def dijkstra(s):
         dist, now = heapq.heappop(q)
         if distance[now] < dist:
             continue
+        if now == a:
+            break
         for i in graph[now]:
             if distance[i[0]] > dist + i[1]:
                 distance[i[0]] = dist + i[1]
                 heapq.heappush(q, [distance[i[0]], i[0]])
 
 
-dijkstra(start)
+dijkstra(start, arrive)
 
 print(distance[arrive]) if distance[arrive] != int(1e9) else print(-1)
