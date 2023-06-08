@@ -35,7 +35,4 @@ def dijkstra(s):
 
 dijkstra(start)
 
-if distance[arrive] == int(1e9):
-    print(-1)
-else:
-    print(distance[arrive])
+print(distance[arrive]) if distance[arrive] != int(1e9) else print(-1)
