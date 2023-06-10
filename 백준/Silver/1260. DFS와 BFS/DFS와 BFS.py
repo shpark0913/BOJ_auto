@@ -1,48 +1,50 @@
+import sys
 from collections import deque
 
-# 정점의 개수, 간선의 개수, 탐색 시작 정점 번호
+input = sys.stdin.readline
+
 N, M, V = map(int, input().split())
 
-visited_DFS = [False] * (N + 1)
-visited_BFS = [False] * (N + 1)
+dfs_result = []
+bfs_result = []
 
-result_DFS = []
-result_BFS = []
+
+def dfs(graph, v, visited):
+    visited[v] = True
+    dfs_result.append(v)
+    for i in graph[v]:
+        if not visited[i]:
+            visited[i] = True
+            dfs(graph, i, visited)
+
+
+def bfs(graph, v, visited):
+    visited[v] = True
+    queue = deque([v])
+    while queue:
+        q = queue.popleft()
+        bfs_result.append(q)
+        for i in graph[q]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
+
 
 graph = [[] for _ in range(N + 1)]
 
 for _ in range(M):
-    s, e = map(int, input().split())
-    graph[s].append(e)
-    graph[e].append(s)
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 
-for elt in graph:
-    elt.sort()
+for i in graph:
+    i.sort()
 
-def dfs(graph, visited, V):
-    global result_DFS
-    visited[V] = True
-    result_DFS.append(V)
-    for i in graph[V]:
-        if not visited[i]:
-            dfs(graph, visited, i)
+visited_dfs = [False] * (N + 1)
+visited_bfs = [False] * (N + 1)
 
+dfs(graph, V, visited_dfs)
+bfs(graph, V, visited_bfs)
+print(*dfs_result)
+print(*bfs_result)
 
-def bfs(graph, visited, V):
-    global result_BFS
-    Queue = deque([V])
-    visited[V] = True
-    while Queue:
-        q = Queue.popleft()
-        result_BFS.append(q)
-        for elt in graph[q]:
-            if not visited[elt]:
-                visited[elt] = True
-                Queue.append(elt)
-
-
-dfs(graph, visited_DFS, V)
-bfs(graph, visited_BFS, V)
-
-print(*result_DFS)
-print(*result_BFS)
