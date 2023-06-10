@@ -3,34 +3,38 @@ import sys
 input = sys.stdin.readline
 
 # 도시의 개수
-N = int(input())
+nums_city = int(input())
 
 # 버스의 개수
-M = int(input())
+nums_bus = int(input())
 
-graph = [[] for _ in range(N + 1)]
+# 노선의 정보
+graph = [[] for _ in range(nums_city + 1)]
 
-distance = [int(1e9)] * (N + 1)
+distance = [int(1e9)] * (nums_city + 1)
 
-for _ in range(M):
+for _ in range(nums_bus):
     a, b, c = map(int, input().split())
     graph[a].append((b, c))
 
-start, end = map(int, input().split())
+start, arrive = map(int, input().split())
 
-def dijkstra(start):
+def dijkstra(s, a):
+    distance[s] = 0
     q = []
-    distance[start] = 0
-    heapq.heappush(q, (0, start))
+    heapq.heappush(q, [0, s])
     while q:
         dist, now = heapq.heappop(q)
-        if dist > distance[now]:
+        if distance[now] < dist:
             continue
+        if now == a:
+            break
         for i in graph[now]:
             if distance[i[0]] > dist + i[1]:
                 distance[i[0]] = dist + i[1]
-                heapq.heappush(q, (dist + i[1], i[0]))
+                heapq.heappush(q, [distance[i[0]], i[0]])
 
-dijkstra(start)
 
-print(distance[end])
+dijkstra(start, arrive)
+
+print(distance[arrive]) if distance[arrive] != int(1e9) else print(-1)
