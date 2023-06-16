@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 dp = [0] * 68
 n = int(input())
 
