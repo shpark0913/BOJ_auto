@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 H, W = map(int, input().split())
 
 areas = []
@@ -8,8 +11,6 @@ for _ in range(H):
     area = list(input())
     areas.append(area)
 
-# clouds_spot = [[] for _ in range(H)]
-#
 for i in range(H):
     for j in range(W):
         if areas[i][j] == 'c':
