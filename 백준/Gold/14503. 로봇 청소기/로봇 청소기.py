@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 # 방의 크기
 N, M = map(int, input().split())
 
