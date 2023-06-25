@@ -1,10 +1,8 @@
 import sys
 input = sys.stdin.readline
 
-M = int(input())
-
 S = set()
-for _ in range(M):
+for _ in range(int(input())):
     calculation = list(input().split())
 
     if calculation[0] == "add":
