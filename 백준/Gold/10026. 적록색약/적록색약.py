@@ -1,9 +1,10 @@
 import sys
 from collections import deque
 
+input = sys.stdin.readline
 N = int(input())
 
-graph = [list(input().rstrip()) for _ in range(N)]
+graph = [list(input()) for _ in range(N)]
 
 visited_normal = [[False] * N for _ in range(N)]
 visited_abnormal = [[False] * N for _ in range(N)]
