@@ -1,6 +1,4 @@
-T = int(input())
-
-for _ in range(T):
+for _ in range(int(input())):
     N = int(input())
     dp = [1, 1, 1, 1, 2, 2, 3, 4, 5, 7, 9]
     if N <= 10:
