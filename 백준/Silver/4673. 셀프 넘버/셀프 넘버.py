@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 nums = list(range(1, 10001))
 
 not_self = set()
