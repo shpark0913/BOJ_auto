@@ -1,8 +1,8 @@
-def ftn(a,b):
+def ftn(a, b):
     ans = []
     while a > 0:
         ans.append(a % b)
-        a = a//b
+        a //= b
     ans = ans[::-1]
     return ans
 
@@ -12,7 +12,7 @@ def pal(s):
             return 0
     return 1
 
-t=int(input())
+t = int(input())
 
 for _ in range(t):
     cnt = 0
