@@ -3,8 +3,9 @@ input = sys.stdin.readline
 
 N = int(input())
 
-people = [input().split() for _ in range(N)]
-
+people = []
+for _ in range(N):
+    people.append(input().split())
 dictionary = {}
 
 for person in people:
