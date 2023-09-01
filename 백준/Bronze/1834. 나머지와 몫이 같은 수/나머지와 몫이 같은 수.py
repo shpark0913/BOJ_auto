@@ -1,8 +1,4 @@
-N = int(input())
-
-ans = 0
-
+N, a = int(input()), 0
 for i in range(1, N):
-    ans += (N + 1) * i
-
-print(ans)
+    a+=(N + 1)*i
+print(a)
