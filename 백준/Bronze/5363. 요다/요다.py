@@ -2,7 +2,6 @@ N = int(input())
 
 lst = [list(input().split()) for _ in range(N)]
 
-
 for l in lst:
     ans = []
     for i in range(2, len(l)):
