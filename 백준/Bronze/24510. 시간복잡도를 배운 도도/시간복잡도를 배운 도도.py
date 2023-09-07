@@ -1,10 +1,8 @@
-C = int(input())
-max_value = 0
-for _ in range(C):
+m = 0
+for _ in range(int(input())):
     s = input()
-    cnt_for = s.count('for')
-    cnt_while = s.count('while')
-    if max_value < cnt_for + cnt_while:
-        max_value = cnt_for + cnt_while
-
-print(max_value)
+    cf = s.count('for')
+    cw = s.count('while')
+    if m < cf + cw:
+        m = cf + cw
+print(m)
