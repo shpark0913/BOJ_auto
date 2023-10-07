@@ -1,6 +1,5 @@
 import sys
-from collections import deque
-
+sys.setrecursionlimit(3000000)
 input = sys.stdin.readline
 
 # 사람의 수
@@ -10,7 +9,6 @@ a, b = map(int, input().split())
 
 relations = [[] for _ in range(101)]
 visited = [0 for _ in range(101)]
-
 # 부모, 자식 관계의 수
 m = int(input())
 
@@ -19,15 +17,13 @@ for _ in range(m):
     relations[x].append(y)
     relations[y].append(x)
 
-def bfs(V):
-    queue = deque([V])
-    while queue:
-        q = queue.popleft()
-        for i in relations[q]:
-            if not visited[i]:
-                visited[i] = visited[q] + 1
-                queue.append(i)
+cnt = 0
+def dfs(V):
+    for i in relations[V]:
+        if visited[i] == 0:
+           visited[i] = visited[V] + 1
+           dfs(i)
 
-bfs(a)
+dfs(a)
 
 print(visited[b] if visited[b] else -1)
