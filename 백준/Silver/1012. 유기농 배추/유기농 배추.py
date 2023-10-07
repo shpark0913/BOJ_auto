@@ -1,35 +1,41 @@
-from collections import deque
+import sys
+sys.setrecursionlimit(10**7)
 
-T = int(input())
+T = int(input())  # 테스트 케이스의 수
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
 
-def bfs(graph, x, y, N, M):
-    global cnt
-    cnt += 1
-    graph[x][y] = 2
-    queue = deque()
-    queue.append([x, y])
-    while queue:
-        q = queue.popleft()
-        for i in range(4):
-            nx, ny = q[0] + dx[i], q[1] + dy[i]
-            if 0 <= nx < N and 0 <= ny < M and graph[nx][ny] == 1:
-                graph[nx][ny] = 2
-                queue.append([nx, ny])
+def dfs(graph, isvisited, a, b):
+    isvisited[a][b] = True
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    for k in range(4):
+        nx = a + dx[k]
+        ny = b + dy[k]
+        if 0 <= nx < len(graph) and 0 <= ny < len(graph[0]):
+            if (not isvisited[nx][ny]) and graph[nx][ny] == 1:
+                dfs(graph, isvisited, nx, ny)
 
-for _ in range(T):
-    N, M, K = map(int, input().split())
-    graph = [[0] * M for _ in range(N)]
-    cnt = 0
+
+for t in range(T):
+    M, N, K = map(int, input().split())   # 가로 길이, 세로 길이, 배추의 개수
+
+    # 배추흰지렁이의 수
+    bugNum = 0
+
+    # 배추밭 (1: 배추, 0: 빈 위치)
+    field = [[0] * N for _ in range(M)]
+
+    # 방문 여부
+    visited = [[False] * N for _ in range(M)]
+
     for _ in range(K):
-        a, b = map(int, input().split())
-        graph[a][b] = 1
-    for i in range(N):
-        for j in range(M):
-            if graph[i][j] == 1:
-                bfs(graph, i, j, N, M)
+        X, Y = map(int, input().split())  # 배추의 위치
+        field[X][Y] = 1
 
-    print(cnt)
-    
+    for i in range(len(field)):
+        for j in range(len(field[0])):
+            if (not visited[i][j]) and field[i][j] == 1:
+                dfs(field, visited, i, j)
+                bugNum += 1
+
+    print(bugNum)
