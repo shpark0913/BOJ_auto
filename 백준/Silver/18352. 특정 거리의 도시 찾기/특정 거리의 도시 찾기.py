@@ -1,10 +1,9 @@
 import heapq
-import sys
-input = sys.stdin.readline
-INF = int(1e9)
 
-# 도시의 개수, 도로의 개수, 거리 정보, 출발 도시의 번호
+# 도시의 개수, 도로의 개수, 거리 정보, 출발 도시 번호
 N, M, K, X = map(int, input().split())
+
+INF = int(1e9)
 
 graph = [[] for _ in range(N + 1)]
 
@@ -16,23 +15,26 @@ for _ in range(M):
 
 def dijkstra(start):
     q = []
-    heapq.heappush(q, [0, start])
     distance[start] = 0
+    heapq.heappush(q, (0, start))
     while q:
         dist, now = heapq.heappop(q)
-        if dist > distance[now]:
-            continue
+        if distance[now] < dist: continue
         for i in graph[now]:
             cost = dist + i[1]
             if cost < distance[i[0]]:
                 distance[i[0]] = cost
-                heapq.heappush(q, [cost, i[0]])
+                heapq.heappush(q, (cost, i[0]))
 
 dijkstra(X)
 
-if K in distance:
-    for i in range(len(distance)):
-        if distance[i] == K:
-            print(i)
-else:
-    print(-1)
+answer = []
+
+for i in range(1, N + 1):
+    if distance[i] == K:
+        answer.append(i)
+
+if len(answer):
+    for a in answer:
+        print(a)
+else: print(-1)
