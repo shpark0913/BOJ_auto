@@ -6,16 +6,15 @@ def bfs(graph, visited, v):
     while queue:
         q = queue.popleft()
         for i in range(len(graph[q])):
-            if not visited[i] and graph[q][i]:
+            if not visited[i] and graph[q][i] == 1:
                 visited[i] = True
                 queue.append(i)
-        
 
 def solution(n, computers):
-    distance = 0
     visited = [False] * n
+    answer = 0
     for i in range(n):
         if not visited[i]:
-            distance += 1
+            answer += 1
             bfs(computers, visited, i)
-    return distance
+    return answer
