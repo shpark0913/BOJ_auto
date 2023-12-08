@@ -1,16 +1,14 @@
 answer = 0
 
-def dfs(graph, index, value, target):
+def dfs(numbers, target, index, value):
     global answer
-    if index == len(graph):
+    if index == len(numbers):
         if value == target:
             answer += 1
         return
-    dfs(graph, index + 1, value + graph[index], target)
-    dfs(graph, index + 1, value - graph[index], target)
-        
+    dfs(numbers, target, index + 1, value + numbers[index])
+    dfs(numbers, target, index + 1, value - numbers[index])
 
 def solution(numbers, target):
-    global answer
-    dfs(numbers, 0, 0, target)
+    dfs(numbers, target, 0, 0)
     return answer
